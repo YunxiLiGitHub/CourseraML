@@ -1,0 +1,26 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\MLEx2\com.python.pydev.analysis\v2_indexcache
+ex2|1548762034365985000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\MLEx2\ex2.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+1=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\MLEx2\ex2.py
+2=ex2
+-- END DICTIONARY
+-- START TREE 1
+10
+cos|1|costFunction!1^74#5*18@
+fon|1|font!1^7#1*19@
+gra|1|gradient!1^87#5*18@
+loa|2|loadnpy_data!1^46#5*18@loadtxtAndcsv_data!1^42#5*18@
+log|1|LogisticRegression!1^10#5*18@
+map|1|mapFeature!1^61#5*18@
+plo|2|plotDecisionBoundary!1^107#5*18@plot_data!1^50#5*18@
+pre|1|predict!1^133#5*18@
+sig|1|sigmoid!1^99#5*18@
+tes|1|testLogisticRegression!1^147#5*18@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

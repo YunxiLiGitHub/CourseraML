@@ -1,0 +1,15 @@
+codeStyleNormal=\#8000FF | null | false | false | false | false
+eclipse.preferences.version=1
+editorBlocknameColor=\#0000FF | null | false | false | false | false
+editorColorBoundarymaker=\#8000FF | null | false | false | false | false
+editorColorComment=\#008000 | null | false | false | false | false
+editorColorHeredoc=\#800080 | null | false | false | false | false
+editorColorKeyword=\#0000FF | null | false | false | false | false
+editorColorLineComment=\#008000 | null | false | false | false | false
+editorColorNumber=\#FF8000 | null | false | false | false | false
+editorColorPHPDocComment=\#800080 | null | false | false | false | false
+editorColorPhpdoc=\#800080 | null | false | false | false | false
+editorColorString=\#808080 | null | false | false | false | false
+editorColorTask=\#008000 | null | false | false | false | false
+editorColorVariable=\#000080 | null | false | false | false | false
+editorStmtColorBoundarymaker=\#8000FF | null | false | false | false | false

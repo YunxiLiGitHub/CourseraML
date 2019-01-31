@@ -1,0 +1,25 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\MLEx1\com.python.pydev.analysis\v2_indexcache
+ex1|1548709864075997000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\MLEx1\ex1.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+1=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\MLEx1\ex1.py
+2=ex1
+-- END DICTIONARY
+-- START TREE 1
+9
+com|1|computerCost!1^81#5*18@
+fea|1|featureNormaliza!1^43#5*18@
+fon|1|font!1^6#1*19@
+gra|1|gradientDescent!1^63#5*18@
+lin|1|linearRegression!1^9#5*18@
+loa|2|loadtxtAndcsv_data!1^35#5*18@loadnpy_data!1^39#5*18@
+plo|2|plot_X1_X2!1^57#5*18@plotJ!1^89#5*18@
+pre|1|predict!1^105#5*18@
+tes|1|testLinearRegression!1^98#5*18@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

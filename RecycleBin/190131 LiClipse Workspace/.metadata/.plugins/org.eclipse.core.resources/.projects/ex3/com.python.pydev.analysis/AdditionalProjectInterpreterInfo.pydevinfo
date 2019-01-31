@@ -1,0 +1,54 @@
+-- VERSION_5
+-- START DISKCACHE_2
+C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\ex3\com.python.pydev.analysis\v2_indexcache
+featureNormalize|1545174151125814000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\featureNormalize.py
+normalEqn|1545174151126784000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\normalEqn.py
+ex1_multi|1545174151122772000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\ex1_multi.py
+gradientDescent|1545174151125814000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\gradientDescent.py
+plotData|1548854958261252000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\plotData.py
+computeCost|1548854921908544000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\computeCost.py
+ex1|1545174151121770000|C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\ex1.py
+-- END DISKCACHE
+-- START DICTIONARY
+14
+5=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\computeCost.py
+13=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\plotData.py
+12=normalEqn
+2=ex1_multi
+9=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\gradientDescent.py
+3=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\ex1.py
+6=computeCost
+8=featureNormalize
+7=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\featureNormalize.py
+10=gradientDescent
+11=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\normalEqn.py
+14=plotData
+1=C:\OfflineFiles\OneDrive - Ericsson AB\Project\LiClipse Workspace\ex3\ex1_multi.py
+4=ex1
+-- END DICTIONARY
+-- START TREE 1
+20
+X|2|X!1^12#1*19@X!3^12#1*35@
+alp|2|alpha!1^53#1*19@alpha!3^30#1*35@
+ax|1|ax!3^72#1*35@
+com|1|compute_cost!5^4#5*50@
+dat|2|data!1^11#1*19@data!3^11#1*35@
+fea|1|feature_normalize!7^4#5*66@
+fig|1|fig1!3^71#1*35@
+gra|2|gradient_descent!9^5#5*82@gradient_descent_multi!9^24#5*82@
+ite|1|iterations!3^29#1*35@
+j_v|1|J_vals!3^61#1*35@
+lvl|1|lvls!3^78#1*35@
+m|2|m!3^14#1*35@m!1^14#1*19@
+nor|1|normal_eqn!11^3#5*98@
+num|1|num_iters!1^54#1*19@
+plo|1|plot_data!13^4#5*114@
+pre|2|predict2!3^49#1*35@predict1!3^47#1*35@
+pri|1|price!1^73#1*19@
+t|1|t!3^66#9*35@
+the|4|theta!3^26#1*35@theta!1^57#1*19@theta1_vals!3^58#1*35@theta0_vals!3^57#1*35@
+y|2|y!1^13#1*19@y!3^13#1*35@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE
