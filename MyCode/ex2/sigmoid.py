@@ -10,5 +10,5 @@ def sigmoid(z):
     #
     # Hint : Do not import math
 
-
+    g = 1.0/(1.0+np.exp(-z))
     return g

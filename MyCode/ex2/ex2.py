@@ -1,116 +1,104 @@
-import matplotlib.pyplot as plt
+
+import matplotlib
+from costFunction import *
+from plotDecisionBoundary import plot_decision_boundary 
 import numpy as np
-import scipy.optimize as opt
-from plotData import *
-import costFunction as cf
-import plotDecisionBoundary as pdb
-import predict as predict
-from sigmoid import *
+import matplotlib.pyplot as plt
+import importlib as imp
+from scipy.special import expit
+from scipy import optimize
 
-plt.ion()
-# Load data
-# The first two columns contain the exam scores and the third column contains the label.
-data = np.loadtxt('ex2data1.txt', delimiter=',')
-X = data[:, 0:2]
-y = data[:, 2]
+'''
+def plot_data(X, y):
+    plt.figure()
 
-# ===================== Part 1: Plotting =====================
-print('Plotting Data with + indicating (y = 1) examples and o indicating (y = 0) examples.')
+    plt.axis([30, 100, 30, 100])
+    plt.legend(['Admitted', 'Not admitted'], loc=1)
+    plt.xlabel('Exam 1 score')
+    plt.ylabel('Exam 2 score')
 
-plot_data(X, y)
+    pos = np.where(y==1)[0]
+    neg = np.where(y==0)[0]
+    
+    #Check to make sure I included all entries
+    assert len(pos)+len(neg) == y.shape[0]
+        
+    # ===================== Your Code Here =====================
+    # Instructions : Plot the positive and negative examples on a
+    #                2D plot, using the marker="+" for the positive
+    #                examples and marker="o" for the negative examples
+    #
+    plt.plot(X[pos,0],X[pos,1],'k+',label='Admitted')
+    plt.plot(X[neg,0],X[neg,1],'bo',label='Admitted')
+    plt.xlabel('Exam 1 score')
+    plt.ylabel('Exam 2 score')
+    plt.legend()
+    plt.grid(True)    
+    plt.show()
+'''
 
-plt.axis([30, 100, 30, 100])
-plt.legend(['Admitted', 'Not admitted'], loc=1)
-plt.xlabel('Exam 1 score')
-plt.ylabel('Exam 2 score')
-
-input('Program paused. Press ENTER to continue')
-
-# ===================== Part 2: Compute Cost and Gradient =====================
-# In this part of the exercise, you will implement the cost and gradient
-# for logistic regression. You need to complete the code in
-# costFunction.py
-
-# Setup the data array appropriately, and add ones for the intercept term
-(m, n) = X.shape
-
-# Add intercept term
-X = np.c_[np.ones(m), X]
-
-# Initialize fitting parameters
-initial_theta = np.zeros(n + 1)
-
-# Compute and display initial cost and gradient
-cost, grad = cf.cost_function(initial_theta, X, y)
-
-np.set_printoptions(formatter={'float': '{: 0.4f}\n'.format})
-
-print('Cost at initial theta (zeros): {:0.3f}'.format(cost))
-print('Expected cost (approx): 0.693')
-print('Gradient at initial theta (zeros): \n{}'.format(grad))
-print('Expected gradients (approx): \n-0.1000\n-12.0092\n-11.2628')
-
-# Compute and display cost and gradient with non-zero theta
-test_theta = np.array([-24, 0.2, 0.2])
-cost, grad = cf.cost_function(test_theta, X, y)
-
-print('Cost at test theta (zeros): {}'.format(cost))
-print('Expected cost (approx): 0.218')
-print('Gradient at test theta: \n{}'.format(grad))
-print('Expected gradients (approx): \n0.043\n2.566\n2.647')
-
-input('Program paused. Press ENTER to continue')
-
-# ===================== Part 3: Optimizing using fmin_bfgs =====================
-# In this exercise, you will use a built-in function (opt.fmin_bfgs) to find the
-# optimal parameters theta
+#Hypothesis function and cost function for logistic regression
+def h(mytheta,myX): #Logistic hypothesis function
+    return expit(np.dot(myX,mytheta))
 
 
-def cost_func(t):
-    return cf.cost_function(t, X, y)[0]
+#1.2.3
+#An alternative to OCTAVE's 'fminunc' we'll use some scipy.optimize function, "fmin"
+#Note "fmin" does not need to be told explicitly the derivative terms
+#It only needs the cost function, and it minimizes with the "downhill simplex algorithm."
+#http://docs.scipy.org/doc/scipy-0.16.0/reference/generated/scipy.optimize.fmin.html
+from scipy import optimize
+def optimizeTheta(mytheta,myX,myy,mylambda=0.):
+    result = optimize.fmin(computeCost, x0=mytheta, args=(myX, myy, mylambda), maxiter=400, full_output=True)
+    return result[0], result[1]
 
 
-def grad_func(t):
-    return cf.cost_function(t, X, y)[1]
+def testEx2():
+    cols = np.loadtxt('ex2data1.txt',delimiter=',',usecols=(0,1,2),unpack=False) #Read in comma separated data
+    ##Form the usual "X" matrix and "y" vector
+    X = cols[:,0:-1]
+    y = cols[:,-1]
+    m = y.shape[0]
+#    plot_data(X,y)
+    
+    #1.2.1
+    myx = np.arange(-10,10,.1)
+    plt.plot(myx,expit(myx))
+    plt.title("Woohoo this looks like a sigmoid function to me.")
+    plt.grid(True)
+#    plt.show()
+  
+    #1.2.2
+    #Check that with theta as zeros, cost returns about 0.693:
+    X = np.insert(X,0,1,axis=1)
+    initial_theta = np.zeros((X.shape[1],1))
+    print(computeCost(initial_theta,X,y))
+    
+    #1.2.3
+    theta, mincost = optimizeTheta(initial_theta,X,y)
+    #"Call your costFunction function using the optimal parameters of θ. 
+    #You should see that the cost is about 0.203."
+    print(computeCost(theta,X,y))
+    
+    #1.2.4
+    plot_decision_boundary(X[:,1:], y, theta)
+    plt.show()
+    
+    #For a student with an Exam 1 score of 45 and an Exam 2 score of 85, 
+    #you should expect to see an admission probability of 0.776.
+    print(h(theta,np.array([1, 45.,85.])))
 
+    #Compute the percentage of samples I got correct:
+    pos = np.where(y==1)[0]
+    neg = np.where(y==0)[0]
+    pos_correct = float(np.sum(makePrediction(theta,X[pos])))
+    neg_correct = float(np.sum(np.invert(makePrediction(theta,X[neg]))))
+    tot = len(pos)+len(neg)
+    prcnt_correct = float(pos_correct+neg_correct)/tot
+    print("Fraction of training samples correctly predicted: %f.", prcnt_correct)     
+    
+    #### 2.1 Visualizing the data
+    return
 
-# Run fmin_bfgs to obtain the optimal theta
-theta, cost, *unused = opt.fmin_bfgs(f=cost_func, fprime=grad_func, x0=initial_theta, maxiter=400, full_output=True, disp=False)
-
-print('Cost at theta found by fmin: {:0.4f}'.format(cost))
-print('Expected cost (approx): 0.203')
-print('theta: \n{}'.format(theta))
-print('Expected Theta (approx): \n-25.161\n0.206\n0.201')
-
-# Plot boundary
-pdb.plot_decision_boundary(theta, X, y)
-
-plt.xlabel('Exam 1 score')
-plt.ylabel('Exam 2 score')
-
-input('Program paused. Press ENTER to continue')
-
-# ===================== Part 4: Predict and Accuracies =====================
-# After learning the parameters, you'll like to use it to predict the outcomes
-# on unseen data. In this part, you will use the logistic regression model
-# to predict the probability that a student with score 45 on exam 1 and
-# score 85 on exam 2 will be admitted
-#
-# Furthermore, you will compute the training and test set accuracies of our model.
-#
-# Your task is to complete the code in predict.py
-
-# Predict probability for a student with score 45 on exam 1
-# and score 85 on exam 2
-
-prob = sigmoid(np.array([1, 45, 85]).dot(theta))
-print('For a student with scores 45 and 85, we predict an admission probability of {:0.4f}'.format(prob))
-print('Expected value : 0.775 +/- 0.002')
-
-# Compute the accuracy on our training set
-p = predict.predict(theta, X)
-
-print('Train accuracy: {}'.format(np.mean(y == p) * 100))
-print('Expected accuracy (approx): 89.0')
-
-input('ex2 Finished. Press ENTER to exit')
+if __name__ == "__main__":
+    testEx2()
