@@ -1,6 +1,7 @@
 import numpy as np
 from sigmoid import *
 
+
 def predict(theta1, theta2, x):
     # Useful values
     m = x.shape[0]

@@ -32,9 +32,8 @@ m = y.size
 rand_indices = np.random.permutation(range(m))
 selected = X[rand_indices[0:100], :]
 
-dd.display_data(selected)
-
-input('Program paused. Press ENTER to continue')
+#dd.display_data(selected)
+#input('Program paused. Press ENTER to continue')
 
 # ===================== Part 2-a: Vectorize Logistic Regression =====================
 # In this part of the exercise, you will reuse your logistic regression
@@ -51,7 +50,8 @@ theta_t = np.array([-2, -1, 1, 2])
 X_t = np.c_[np.ones(5), np.arange(1, 16).reshape((3, 5)).T/10]
 y_t = np.array([1, 0, 1, 0, 1])
 lmda_t = 3
-cost, grad = lCF.lr_cost_function(theta_t, X_t, y_t, lmda_t)
+#cost, grad = lCF.lr_cost_function(theta_t, X_t, y_t, lmda_t)
+cost = lCF.lr_cost_function(theta_t, X_t, y_t, lmda_t)
 
 np.set_printoptions(formatter={'float': '{: 0.6f}'.format})
 print('Cost: {:0.7f}'.format(cost))
